@@ -52,6 +52,14 @@ LoRaPhy::GetTypeId (void)
 						"The state of the transceiver",
 						MakeTraceSourceAccessor (&LoRaPhy::m_state),
 						"ns3::TracedValueCallback::State")
+	.AddTraceSource ("TxPower",
+                        "The transmit power of the transceiver, in mW",
+                        MakeTraceSourceAccessor (&LoRaPhy::m_power),
+                        "ns3::TracedValueCallback::double")
+ 	.AddTraceSource("Bandwidth",
+                        "The bandwidth of the currently used channel, in Hz",
+                        MakeTraceSourceAccessor (&LoRaPhy::m_bandwidth),
+                        "ns3::TracedValueCallback::uint32_t")
   ;
   return tid;
 }

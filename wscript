@@ -3,11 +3,12 @@
 import os.path
 
 def build(bld):
-	obj = bld.create_ns3_module('lora', ['core', 'network', 'mobility', 'spectrum', 'propagation', 'energy'])
+	obj = bld.create_ns3_module('lorawan', ['core', 'network', 'mobility', 'spectrum', 'propagation', 'energy'])
 	obj.source = [
 	  'helper/lora-helper.cc',
 	  'helper/lora-energy-source-helper.cc',
 	  'helper/lora-radio-energy-model-helper.cc',
+	  'helper/lorawan-radio-energy-model-helper.cc',
 	  'model/lora-error-model.cc',
 	  'model/lora-radio-energy-model.cc',
 	  'model/lora-phy.cc',
@@ -29,6 +30,8 @@ def build(bld):
 	  'model/lora-power-application.cc',
 	  'model/lora-no-power-application.cc',
 	  'model/lora-test-application.cc',
+	  'model/lorawan-current-model.cc',
+	  'model/lorawan-radio-energy-model.cc',
 	  'model/commands/link-check-req.cc',
 	  'model/commands/link-adr-ans.cc',
 	  'model/commands/dev-status-ans.cc',
@@ -49,16 +52,17 @@ def build(bld):
 
 	obj.cxxflags=['-finstrument-functions']
 
-	module_test = bld.create_ns3_module_test_library('lora')
+	module_test = bld.create_ns3_module_test_library('lorawan')
 	module_test.source = [
 	]
 
 	headers = bld(features='ns3header')
-	headers.module = 'lora'
+	headers.module = 'lorawan'
 	headers.source = [
     'helper/lora-helper.h',
     'helper/lora-energy-source-helper.h',
     'helper/lora-radio-energy-model-helper.h',
+    'helper/lorawan-radio-energy-model-helper.h',
     'model/lora-error-model.h',
     'model/lora-radio-energy-model.h',
     'model/lora-phy.h',
@@ -80,6 +84,8 @@ def build(bld):
     'model/lora-power-application.h',
     'model/lora-no-power-application.h',
     'model/lora-test-application.h',
+    'model/lorawan-current-model.h',
+	'model/lorawan-radio-energy-model.h',
     'model/commands/link-check-req.h',
     'model/commands/link-adr-ans.h',
     'model/commands/dev-status-ans.h',

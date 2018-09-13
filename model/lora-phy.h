@@ -295,9 +295,9 @@ protected:
  bool m_transmission; //!< The transceiver is actually transmitting (not in TX state)
  double m_k; //!< boltzman
  double m_temperature; //!< noise temperature
- uint32_t m_bandwidth; //!< bandwith
+ TracedValue<uint32_t> m_bandwidth; //!< bandwith
  uint8_t m_spreadingfactor; //!< spreading factor number
- double m_power; //!< power of transmission
+ TracedValue<double> m_power; //!< power of transmission
  uint32_t m_channelIndex; //!< channel to transmit on
  Ptr<LoRaSpectrumSignalParameters> m_params; //!< signal parameters of the packet being received
  //Ptr<LoRaSpectrumSignalParameters> m_param; //!< 
